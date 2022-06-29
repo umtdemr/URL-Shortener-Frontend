@@ -1,4 +1,5 @@
 @use "scss/globals/" as global;
+@use "scss/utils/functions" as *;
 
 html,
 body {
@@ -7,8 +8,19 @@ body {
 }
 body {
   background-color: var(--bg);
+  color: var(--text-color)
 }
 
+.wrapper {
+  width: 100%;
+  max-width: 1024px;
+  margin: 0 auto;
+}
+
+header {
+  padding: rem(20);
+  padding-top: rem(50);
+}
 a {
   color: inherit;
   text-decoration: none;
