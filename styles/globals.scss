@@ -30,3 +30,10 @@ a {
 * {
   box-sizing: border-box;
 }
+.btn {
+  background-color: var(--btn-bg);
+  color: var(--input-bg);
+  border: none;
+  padding: rem(12);
+  border-radius: 12px;
+}

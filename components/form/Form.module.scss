@@ -54,8 +54,33 @@
     }
   } 
   &__content {
+    display: grid;
+    place-items: center;
     width: 100%;
+    height: 100%;
     padding: rem(15);
-    background-color: var(--input-bg);
+    background-color: var(--tab-content-bg);
+    backdrop-filter: blur(15px);
+    input {
+      display: block;
+      width: 60%;
+      padding: rem(15);
+      margin: 0 auto;
+      border-radius: 10px;
+      border: 1px solid var(--text-color);
+    }
+    &_wrapper {
+      height: 100%;
+      background-image: url('https://cdn.osxdaily.com/wp-content/uploads/2020/12/macos-big-sur-updated-wallpapers-17.jpg');
+      background-size: cover;
+    }
+    .form {
+      width: 100%;
+    }
   }
 }
+.btn_shorten {
+  display: block;
+  margin: 20px auto;
+}
+

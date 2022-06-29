@@ -17,8 +17,15 @@ const Form: react.FC = () => {
           </div>
           <h3 className={styles.tab_title}>shortql</h3>
         </div>
-        <div className={styles.tab__content}>
-          
+        <div className={styles.tab__content_wrapper}>
+          <div className={styles.tab__content}>
+            <div className={styles.form}>
+              <input 
+                placeholder='URL'
+                type="text" />
+              <button className={`btn ${styles.btn_shorten}`}>shorten</button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
