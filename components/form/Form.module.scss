@@ -1,0 +1,61 @@
+@use '../../styles/scss/utils/functions' as *;
+
+.slogan {
+  font-size: rem(72);
+  color: var(--title-big);
+  font-weight: 900; 
+  background-color: red;
+  background-image: linear-gradient(145deg, var(--title-big), var(--title-red));
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: rem(100);
+}
+
+.wrapper {
+  margin-block-start: rem(100);
+  display: flex;
+  justify-content: space-between;
+}
+
+.tab {
+  width: 70%;
+  &__header {
+    border-top-right-radius: 25px;
+    border-top-left-radius: 25px;
+    background-color: var(--tab-bg);
+    padding: rem(15);
+    width: 100%;
+    display: flex;
+    position: relative;
+    .tab_title {
+      text-align: center;
+      width: 100%;
+      position: absolute;
+      left: 0;
+    }
+    .spans {
+      display: flex;
+      span {
+        display: block;
+        width: 15px;
+        aspect-ratio: 1;
+        border-radius: 50%;
+        margin-right: 6px;
+        &.close {
+          background-color: var(--tab-close);
+        }
+        &.resize {
+          background-color: var(--tab-resize);
+        }
+        &.min {
+          background-color: var(--tab-min);
+        }
+      }
+    }
+  } 
+  &__content {
+    width: 100%;
+    padding: rem(15);
+    background-color: var(--input-bg);
+  }
+}
