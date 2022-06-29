@@ -1,0 +1,17 @@
+@use '../../styles/scss/utils/functions' as *;
+
+.main_nav {
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav_title {
+  font-size: rem(24);
+  font-weight: 700;
+}
+.nav_title__red {
+  color: var(--title-red)
+}
+.icon svg {
+  width: 24px;
+}
