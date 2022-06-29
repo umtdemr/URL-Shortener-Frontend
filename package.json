@@ -1,5 +1,10 @@
 {
-  "name": "shorturl",
+  "name": "url-shortener-graphql",
+  "description": "This project is a frontend implementation of URL Shortener GraphQL API",
+  "author": {
+    "name": "mediumgoal",
+    "url": "https://umitde.com"
+  },
   "version": "0.1.0",
   "private": true,
   "scripts": {
