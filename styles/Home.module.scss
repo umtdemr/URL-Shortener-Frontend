@@ -1,6 +1,8 @@
+@use 'scss/utils/functions' as *;
+
 .container {
   background-color: red;
 }
 .navTitle {
-  font-size: 10rem;
+  font-size: rem(24);
 }
