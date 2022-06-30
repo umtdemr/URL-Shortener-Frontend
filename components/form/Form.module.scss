@@ -63,6 +63,12 @@
         aspect-ratio: 1;
         border-radius: 50%;
         margin-right: 6px;
+        cursor: default;
+        z-index: 1;
+        transition: 300ms all;
+        &:hover {
+          opacity: .5;
+        }
         &.close {
           background-color: var(--tab-close);
         }

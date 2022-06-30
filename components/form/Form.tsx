@@ -1,10 +1,16 @@
-import react from 'react'
+import react, { useState } from 'react'
 import styles from './Form.module.scss'
 import { motion, useDragControls } from 'framer-motion';
 
 
 const Form: react.FC = () => {
   const dragControls = useDragControls();
+  const variants = {
+    initial: {
+      left: 0,
+      opacity: 1
+    }
+  }
   return (
     <div className={styles.wrapper}>
       <h2 className={styles.slogan}>
@@ -12,13 +18,13 @@ const Form: react.FC = () => {
       </h2>
       <motion.div 
         className={styles.tab}
-        style={{position: 'relative'}}
+        style={{ position: 'relative' }}
         initial={{ left: 10, opacity: 0 }}
-        animate={{ left: 0, opacity: 1 }}
-        transition={{duration: 0.5}}
+        animate={["initial"]}
         drag="x"
         dragControls={dragControls}
         dragConstraints={{left: -20, right: 20}}
+        variants={variants}
       >
         <div 
           onPointerDown={(e) => {
@@ -26,9 +32,12 @@ const Form: react.FC = () => {
           }}
           className={styles.tab__header}>
           <div className={styles.spans}>
-            <span className={styles.close} />
-            <span className={styles.resize} />
-            <span className={styles.min} />
+            <span 
+              className={styles.close} />
+            <span 
+              className={styles.resize} />
+            <span 
+              className={styles.min} />
           </div>
           <h3 className={styles.tab_title}>shortql</h3>
         </div>
