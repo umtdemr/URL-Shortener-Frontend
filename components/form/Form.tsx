@@ -1,5 +1,6 @@
 import react from 'react'
 import styles from './Form.module.scss'
+import { motion } from 'framer-motion';
 
 
 const Form: react.FC = () => {
@@ -8,8 +9,15 @@ const Form: react.FC = () => {
       <h2 className={styles.slogan}>
         the<br/>shorter,<br/> the<br/> better
       </h2>
-      <div className={styles.tab}>
-        <div className={styles.tab__header}>
+      <motion.div 
+        className={styles.tab}
+        style={{position: 'relative'}}
+        initial={{ left: 10, opacity: 0 }}
+        animate={{ left: 0, opacity: 1 }}
+        transition={{duration: 0.5}}
+      >
+        <div 
+          className={styles.tab__header}>
           <div className={styles.spans}>
             <span className={styles.close} />
             <span className={styles.resize} />
@@ -27,7 +35,7 @@ const Form: react.FC = () => {
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
     </div>
   )
 }
