@@ -9,12 +9,26 @@
   background-clip: text;
   -webkit-text-fill-color: transparent;
   line-height: rem(100);
+  @include breakpoint-down(medium) {
+    font-size: rem(50);
+    line-height: rem(70);
+  }
+  @include breakpoint-down(small) {
+    margin-block-start: 50px;
+    order: 2;
+    font-size: rem(30);
+    line-height: rem(40);
+  }
 }
 
 .wrapper {
   margin-block-start: rem(100);
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  @include breakpoint-down(small) {
+    flex-direction: column;
+  }
 }
 
 .tab {
@@ -85,6 +99,10 @@
     .form {
       width: 100%;
     }
+  }
+  @include breakpoint-down(small) {
+    order: 1;
+    width: 95%;
   }
 }
 .btn_shorten {
