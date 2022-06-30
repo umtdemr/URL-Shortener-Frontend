@@ -10,6 +10,7 @@ const Form: react.FC = () => {
       left: 0,
       opacity: 1
     }
+    // TODO Add maximized
   }
   return (
     <div className={styles.wrapper}>
