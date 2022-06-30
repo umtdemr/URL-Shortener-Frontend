@@ -1,9 +1,10 @@
 import react from 'react'
 import styles from './Form.module.scss'
-import { motion } from 'framer-motion';
+import { motion, useDragControls } from 'framer-motion';
 
 
 const Form: react.FC = () => {
+  const dragControls = useDragControls();
   return (
     <div className={styles.wrapper}>
       <h2 className={styles.slogan}>
@@ -15,8 +16,14 @@ const Form: react.FC = () => {
         initial={{ left: 10, opacity: 0 }}
         animate={{ left: 0, opacity: 1 }}
         transition={{duration: 0.5}}
+        drag="x"
+        dragControls={dragControls}
+        dragConstraints={{left: -20, right: 20}}
       >
         <div 
+          onPointerDown={(e) => {
+            dragControls.start(e);
+          }}
           className={styles.tab__header}>
           <div className={styles.spans}>
             <span className={styles.close} />
