@@ -30,8 +30,12 @@
     font-size: rem(20);
   }
   .close {
+    width: 15px;
+    aspect-ratio: 1;
+    background-color: var(--tab-close);
+    border-radius: 100%;
     position: absolute;
-    right: 20px;
+    left: 20px;
     top: 20px;
   }
 }

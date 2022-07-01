@@ -12,7 +12,7 @@ const FormOverlay: react.FC = () => {
       layout className={styles.overlay}>
       <div 
         className={styles.overlay__message}>
-        <a href='#' className={styles.close}>x</a>
+        <a href='#' className={styles.close}></a>
         <div 
           className={styles.overlay__content}>
           <a href="http://localhost:3000/kkkkk">http://localhost:3000/ksksjd</a>
