@@ -1,6 +1,6 @@
 import react, { useState } from 'react'
 import styles from './Form.module.scss'
-import { motion, useDragControls } from 'framer-motion';
+import { AnimateSharedLayout, motion, useDragControls } from 'framer-motion';
 import { useMutation, gql } from '@apollo/client';
 import FormOverlay from './overlay/Overlay';
 
@@ -25,9 +25,6 @@ const Form: react.FC = () => {
   }
 
   const [shortenUrl, { data, loading, error }] = useMutation(SHORTEN_URL);
-  console.log(data);
-  console.log('loading', loading);
-  console.log('error', error);
 
   return (
     <div className={styles.wrapper}>
@@ -61,19 +58,21 @@ const Form: react.FC = () => {
         </div>
         <div className={styles.tab__content_wrapper}>
           <div className={styles.tab__content}>
-            <div className={styles.form}>
-              <input 
-                placeholder='URL'
-                type="text" />
-              <button 
-                onClick={() => shortenUrl({
-                  variables: {data: {url: 'https://google.com'}}
-                })}
-                className={`btn ${styles.btn_shorten}`}>
-                shorten
-              </button>
-            </div>
-            <FormOverlay />
+            <AnimateSharedLayout>
+              <div className={styles.form}>
+                <input 
+                  placeholder='URL'
+                  type="text" />
+                <button 
+                  onClick={() => shortenUrl({
+                    variables: {data: {url: 'https://google.com'}}
+                  })}
+                  className={`btn ${styles.btn_shorten}`}>
+                  shorten
+                </button>
+              </div>
+              { data && <FormOverlay /> }
+            </AnimateSharedLayout>
           </div>
         </div>
       </motion.div>

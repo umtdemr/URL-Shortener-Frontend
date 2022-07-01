@@ -5,7 +5,11 @@ import styles from './Overlay.module.scss'
 
 const FormOverlay: react.FC = () => {
   return (
-    <motion.div className={styles.overlay}>
+    <motion.div 
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1, transition: { duration : 0.3} }}
+      exit={{ opacity: 0 }}
+      layout className={styles.overlay}>
       <div 
         className={styles.overlay__message}>
         <a href='#' className={styles.close}>x</a>
