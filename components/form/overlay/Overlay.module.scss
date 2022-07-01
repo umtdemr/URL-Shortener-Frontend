@@ -1,0 +1,15 @@
+.overlay {
+  width: 100%;
+  position: absolute;
+  height: 100%;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  background-color: rgba(0,0,0,.4);
+  backdrop-filter: blur(25px);
+  &__message {
+    width: 400px;
+    aspect-ratio: 2;
+    background-color: #333;
+  }
+}

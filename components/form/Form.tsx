@@ -2,6 +2,7 @@ import react, { useState } from 'react'
 import styles from './Form.module.scss'
 import { motion, useDragControls } from 'framer-motion';
 import { useMutation, gql } from '@apollo/client';
+import FormOverlay from './overlay/Overlay';
 
 
 const SHORTEN_URL = gql`mutation CREATE_SHORTEN_URL($data: UrlDataInput!) {
@@ -72,6 +73,7 @@ const Form: react.FC = () => {
                 shorten
               </button>
             </div>
+            <FormOverlay />
           </div>
         </div>
       </motion.div>
