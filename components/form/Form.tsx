@@ -1,7 +1,17 @@
 import react, { useState } from 'react'
 import styles from './Form.module.scss'
 import { motion, useDragControls } from 'framer-motion';
+import { useMutation, gql } from '@apollo/client';
 
+
+const SHORTEN_URL = gql`mutation CREATE_SHORTEN_URL($data: UrlDataInput!) {
+  createShortenerUrl(data: $data) {
+    id
+    shortId
+    url
+    createdAt
+  }
+}`
 
 const Form: react.FC = () => {
   const dragControls = useDragControls();
@@ -12,6 +22,12 @@ const Form: react.FC = () => {
     }
     // TODO Add maximized
   }
+
+  const [shortenUrl, { data, loading, error }] = useMutation(SHORTEN_URL);
+  console.log(data);
+  console.log('loading', loading);
+  console.log('error', error);
+
   return (
     <div className={styles.wrapper}>
       <h2 className={styles.slogan}>
@@ -48,7 +64,13 @@ const Form: react.FC = () => {
               <input 
                 placeholder='URL'
                 type="text" />
-              <button className={`btn ${styles.btn_shorten}`}>shorten</button>
+              <button 
+                onClick={() => shortenUrl({
+                  variables: {data: {url: 'https://google.com'}}
+                })}
+                className={`btn ${styles.btn_shorten}`}>
+                shorten
+              </button>
             </div>
           </div>
         </div>
