@@ -1,3 +1,5 @@
+@use '../../../styles/scss/utils/' as *;
+
 .overlay {
   width: 100%;
   position: absolute;
@@ -8,8 +10,28 @@
   background-color: rgba(0,0,0,.4);
   backdrop-filter: blur(25px);
   &__message {
+    position: relative;
+    display: flex;
+    flex-direction: column;
     width: 400px;
+    padding: rem(25);
     aspect-ratio: 2;
     background-color: #333;
+    color: #fff;
+    border-radius: 25px;
+  }
+  &__header {
+    height: 10%;
+  }
+  &__content {
+    display: grid;
+    place-items: center;
+    height: 100%;
+    font-size: rem(20);
+  }
+  .close {
+    position: absolute;
+    right: 20px;
+    top: 20px;
   }
 }

@@ -8,7 +8,11 @@ const FormOverlay: react.FC = () => {
     <motion.div className={styles.overlay}>
       <div 
         className={styles.overlay__message}>
-        message  
+        <a href='#' className={styles.close}>x</a>
+        <div 
+          className={styles.overlay__content}>
+          <a href="http://localhost:3000/kkkkk">http://localhost:3000/ksksjd</a>
+        </div>
       </div>
     </motion.div>
   )
