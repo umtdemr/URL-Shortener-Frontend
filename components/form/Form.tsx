@@ -26,6 +26,16 @@ const Form: react.FC = () => {
 
   const [shortenUrl, { data, loading, error }] = useMutation(SHORTEN_URL);
 
+  const shortenMutation = async () => {
+    try {
+      await shortenUrl({
+        variables: {data: {url: 'https://google.com'}}
+      })
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
   return (
     <div className={styles.wrapper}>
       <h2 className={styles.slogan}>
@@ -64,9 +74,7 @@ const Form: react.FC = () => {
                   placeholder='URL'
                   type="text" />
                 <button 
-                  onClick={() => shortenUrl({
-                    variables: {data: {url: 'https://google.com'}}
-                  })}
+                  onClick={() => shortenMutation()}
                   className={`btn ${styles.btn_shorten}`}>
                   shorten
                 </button>
