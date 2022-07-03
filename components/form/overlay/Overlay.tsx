@@ -3,6 +3,8 @@ import { motion } from 'framer-motion';
 import styles from './Overlay.module.scss'
 
 
+// TODO Create props for component
+
 const FormOverlay: react.FC = () => {
   return (
     <motion.div 
