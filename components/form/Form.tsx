@@ -18,7 +18,7 @@ const Form: react.FC = () => {
   const dragControls = useDragControls();
   const variants = {
     hidden: {
-      left: 30,
+      left: 800,
       opacity: 0,
     },
     initial: {
@@ -26,8 +26,11 @@ const Form: react.FC = () => {
       opacity: 1,
       transition: {
         duration: 0.5,
-        delayChildren: .7,
-        staggerChildren: 0.2
+        delayChildren: .5,
+        staggerChildren: 0.2,
+        type: "spring",
+        stiffness: 700,
+        damping: 20
       }
     }
   }
@@ -67,7 +70,7 @@ const Form: react.FC = () => {
     <div className={styles.wrapper}>
       <motion.h2 
         style={{ position: 'relative' }}
-        initial={{ opacity: 0, right: 30 }}
+        initial={{ opacity: 0, right: 80 }}
         animate={{ opacity: 1, right: 0 }}
         className={styles.slogan}>
         the<br/>shorter,<br/> the<br/> better
