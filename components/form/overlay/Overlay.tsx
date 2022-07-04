@@ -15,6 +15,7 @@ interface FormOverlayProps {
 }
 
 const FormOverlay: react.FC<FormOverlayProps> = ({data, error, loading, setShowOverlay}) => {
+  console.log(data)
   if (loading) {
     return <FormOverlayWrapper>
       <div 
@@ -26,6 +27,7 @@ const FormOverlay: react.FC<FormOverlayProps> = ({data, error, loading, setShowO
       </div>
     </FormOverlayWrapper>
   }
+  
   return (
     <FormOverlayWrapper>
       <div 
@@ -33,7 +35,14 @@ const FormOverlay: react.FC<FormOverlayProps> = ({data, error, loading, setShowO
         <a href='#' className={styles.close} onClick={() => setShowOverlay(false)}></a>
         <div 
           className={styles.overlay__content}>
-          <a href="http://localhost:3000/kkkkk">ss</a>
+          {error 
+            ? <span> 
+              {error.message === 'Argument Validation Error' ? 'please enter valid url' : 'failed to fetch'}
+            </span>
+            : <a href={`http://localhost:3000/${data.createShortenerUrl.shortId}`}>
+              http://localhost:3000/${data.createShortenerUrl.shortId}
+            </a>
+          }
         </div>
       </div>
     </FormOverlayWrapper>
