@@ -1,11 +1,8 @@
 import react, { Dispatch, SetStateAction } from 'react'
-import { motion } from 'framer-motion';
 import styles from './Overlay.module.scss'
 import { ApolloError } from '@apollo/client';
 import FormOverlayWrapper from '../overlay_wrapper/OverlayWrapper';
 
-
-// TODO Create props for component
 
 interface FormOverlayProps {
   data?: any;

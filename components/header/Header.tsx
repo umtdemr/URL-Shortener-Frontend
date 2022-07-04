@@ -2,7 +2,7 @@ import Link from 'next/link'
 import react from 'react'
 import styles from './Header.module.scss'
 
-const Header: React.FC = () => {
+const Header: react.FC = () => {
   return (
     <header>
       <div className="wrapper">
