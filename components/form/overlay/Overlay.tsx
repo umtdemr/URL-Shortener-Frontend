@@ -39,7 +39,7 @@ const FormOverlay: react.FC<FormOverlayProps> = ({data, error, loading, setShowO
               {error.message === 'Argument Validation Error' ? 'please enter valid url' : 'failed to fetch'}
             </span>
             : <a href={`http://localhost:3000/${data.createShortenerUrl.shortId}`}>
-              http://localhost:3000/${data.createShortenerUrl.shortId}
+              http://localhost:3000/{data.createShortenerUrl.shortId}
             </a>
           }
         </div>
