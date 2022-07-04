@@ -1,8 +1,6 @@
-import { gql, useQuery } from '@apollo/client';
 import { NextPage } from 'next';
-import { useRouter } from 'next/router';
-import { useEffect } from 'react';
 import { GetServerSideProps } from 'next'
+import Link from 'next/link';
 import fetchAPI from '../utils/FetchAPI';
 
 
@@ -13,13 +11,16 @@ const GET_URL_QUERY = `query GetUrl($shortId: String!) {
   } 
 `
 
-const RedirectPage: NextPage<{errors?: any}> = ({ errors }) => {
-  // TODO : Show error to the user
-  const router = useRouter();
-  const { shortId } = router.query;
-
+const RedirectPage: NextPage = () => {
   return (
-    <div>{shortId}</div>  
+    <div className='error_page'>
+      <div className='error_page__content'>
+        <h3>the url you looked for is missing.</h3>
+        <Link href="/">
+          <a className='btn'>create it</a>
+        </Link>
+      </div>
+    </div>
   )
 }
 
@@ -48,11 +49,9 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       },
     }
   }
-  const errors = res.errors;
 
   return {
     props: {
-      errors
-    }, // will be passed to the page component as props
+    },
   }
 }

@@ -40,3 +40,18 @@ a {
 button {
   cursor: pointer;
 } 
+
+.error_page {
+  display: grid;
+  place-items: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--bg-dark);
+  &__content {
+    .btn {
+      display: block;
+      margin: 20px auto 0 auto;
+      width: max-content;
+    } 
+  }
+}
