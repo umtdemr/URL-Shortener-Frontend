@@ -13,7 +13,8 @@ const GET_URL_QUERY = `query GetUrl($shortId: String!) {
   } 
 `
 
-const RedirectPage: NextPage = () => {
+const RedirectPage: NextPage<{errors?: any}> = ({ errors }) => {
+  // TODO : Show error to the user
   const router = useRouter();
   const { shortId } = router.query;
 
@@ -27,7 +28,7 @@ export default RedirectPage;
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { shortId } = context.params!;
-  const data = await fetchAPI(
+  const res = await fetchAPI(
     GET_URL_QUERY,
     {
       preview: true,
@@ -36,6 +37,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       },
     }
   )
+  const data = res.data;
+
 
   if (data) {
     return {
@@ -45,8 +48,11 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       },
     }
   }
+  const errors = res.errors;
 
   return {
-    props: {}, // will be passed to the page component as props
+    props: {
+      errors
+    }, // will be passed to the page component as props
   }
 }
