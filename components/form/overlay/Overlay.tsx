@@ -2,6 +2,7 @@ import react, { Dispatch, SetStateAction } from 'react'
 import { motion } from 'framer-motion';
 import styles from './Overlay.module.scss'
 import { ApolloError } from '@apollo/client';
+import FormOverlayWrapper from '../overlay_wrapper/OverlayWrapper';
 
 
 // TODO Create props for component
@@ -14,21 +15,28 @@ interface FormOverlayProps {
 }
 
 const FormOverlay: react.FC<FormOverlayProps> = ({data, error, loading, setShowOverlay}) => {
+  if (loading) {
+    return <FormOverlayWrapper>
+      <div 
+        className={styles.overlay__message}>
+        <div 
+          className={styles.overlay__content}>
+          <div className={styles.lds_ring}><div></div><div></div><div></div><div></div></div>
+        </div>
+      </div>
+    </FormOverlayWrapper>
+  }
   return (
-    <motion.div 
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1, transition: { duration : 0.3} }}
-      exit={{ opacity: 0 }}
-      layout className={styles.overlay}>
+    <FormOverlayWrapper>
       <div 
         className={styles.overlay__message}>
         <a href='#' className={styles.close} onClick={() => setShowOverlay(false)}></a>
         <div 
           className={styles.overlay__content}>
-          <a href="http://localhost:3000/kkkkk">http://localhost:3000/ksksjd</a>
+          <a href="http://localhost:3000/kkkkk">ss</a>
         </div>
       </div>
-    </motion.div>
+    </FormOverlayWrapper>
   )
 }
 

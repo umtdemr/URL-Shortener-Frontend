@@ -31,7 +31,7 @@ const Form: react.FC = () => {
     setShowOverlay(true);
     try {
       await shortenUrl({
-        variables: {data: {url: 'https://google.com'}}
+        variables: {data: {url: 'https://qwqqe.com'}}
       })
     } catch (err) {
       console.error(err);
@@ -70,7 +70,6 @@ const Form: react.FC = () => {
         </div>
         <div className={styles.tab__content_wrapper}>
           <div className={styles.tab__content}>
-            <AnimateSharedLayout>
               <div className={styles.form}>
                 <input 
                   placeholder='URL'
@@ -87,7 +86,6 @@ const Form: react.FC = () => {
                 loading={loading} 
                 setShowOverlay={setShowOverlay}
                 /> }
-            </AnimateSharedLayout>
           </div>
         </div>
       </motion.div>
