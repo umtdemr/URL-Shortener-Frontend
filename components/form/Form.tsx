@@ -25,8 +25,10 @@ const Form: react.FC = () => {
   }
 
   const [shortenUrl, { data, loading, error }] = useMutation(SHORTEN_URL);
+  const [showOverlay, setShowOverlay] = useState(false);
 
   const shortenMutation = async () => {
+    setShowOverlay(true);
     try {
       await shortenUrl({
         variables: {data: {url: 'https://google.com'}}
@@ -79,7 +81,12 @@ const Form: react.FC = () => {
                   shorten
                 </button>
               </div>
-              { data && <FormOverlay /> }
+              { showOverlay && <FormOverlay 
+                data={data} 
+                error={error}
+                loading={loading} 
+                setShowOverlay={setShowOverlay}
+                /> }
             </AnimateSharedLayout>
           </div>
         </div>
