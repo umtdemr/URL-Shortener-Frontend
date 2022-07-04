@@ -1,4 +1,4 @@
-import react, { useState } from 'react'
+import react, { FormEvent, useState, MouseEvent } from 'react'
 import styles from './Form.module.scss'
 import { AnimateSharedLayout, motion, useDragControls } from 'framer-motion';
 import { useMutation, gql } from '@apollo/client';
@@ -28,7 +28,8 @@ const Form: react.FC = () => {
   const [showOverlay, setShowOverlay] = useState(false);
   const [url, setUrl] = useState('');
 
-  const shortenMutation = async () => {
+  const shortenMutation = async (e: FormEvent<HTMLFormElement> | MouseEvent<HTMLButtonElement | MouseEvent>) => {
+    e.preventDefault();
     setUrl('');
     setShowOverlay(true);
     try {
@@ -76,18 +77,18 @@ const Form: react.FC = () => {
         </div>
         <div className={styles.tab__content_wrapper}>
           <div className={styles.tab__content}>
-              <div className={styles.form}>
+              <form className={styles.form} onSubmit={(e) => shortenMutation(e)}>
                 <input 
                   placeholder='URL'
                   value={url}
                   onChange={(e) => setUrl(e.target.value)}
                   type="text" />
                 <button 
-                  onClick={() => shortenMutation()}
+                  onClick={(e) => shortenMutation(e)}
                   className={`btn ${styles.btn_shorten}`}>
                   shorten
                 </button>
-              </div>
+              </form>
               { showOverlay && <FormOverlay 
                 data={data} 
                 error={error}
