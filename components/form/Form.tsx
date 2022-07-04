@@ -17,11 +17,29 @@ const SHORTEN_URL = gql`mutation CREATE_SHORTEN_URL($data: UrlDataInput!) {
 const Form: react.FC = () => {
   const dragControls = useDragControls();
   const variants = {
+    hidden: {
+      left: 30,
+      opacity: 0,
+    },
     initial: {
       left: 0,
-      opacity: 1
+      opacity: 1,
+      transition: {
+        duration: 0.5,
+        delayChildren: .7,
+        staggerChildren: 0.2
+      }
     }
-    // TODO Add maximized
+  }
+  const inputVariants = {
+    hidden: {
+      opacity: 0,
+      y: 30,
+    },
+    initial: {
+      opacity: 1,
+      y: 0
+    }
   }
 
   const [shortenUrl, { data, loading, error }] = useMutation(SHORTEN_URL);
@@ -47,13 +65,17 @@ const Form: react.FC = () => {
 
   return (
     <div className={styles.wrapper}>
-      <h2 className={styles.slogan}>
+      <motion.h2 
+        style={{ position: 'relative' }}
+        initial={{ opacity: 0, right: 30 }}
+        animate={{ opacity: 1, right: 0 }}
+        className={styles.slogan}>
         the<br/>shorter,<br/> the<br/> better
-      </h2>
+      </motion.h2>
       <motion.div 
         className={styles.tab}
         style={{ position: 'relative' }}
-        initial={{ left: 10, opacity: 0 }}
+        initial="hidden"
         animate={["initial"]}
         drag="x"
         dragControls={dragControls}
@@ -78,16 +100,18 @@ const Form: react.FC = () => {
         <div className={styles.tab__content_wrapper}>
           <div className={styles.tab__content}>
               <form className={styles.form} onSubmit={(e) => shortenMutation(e)}>
-                <input 
+                <motion.input 
+                  variants={inputVariants}
                   placeholder='URL'
                   value={url}
                   onChange={(e) => setUrl(e.target.value)}
                   type="text" />
-                <button 
+                <motion.button 
+                  variants={inputVariants}
                   onClick={(e) => shortenMutation(e)}
                   className={`btn ${styles.btn_shorten}`}>
                   shorten
-                </button>
+                </motion.button>
               </form>
               { showOverlay && <FormOverlay 
                 data={data} 
