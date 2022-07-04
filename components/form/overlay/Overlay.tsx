@@ -15,7 +15,6 @@ interface FormOverlayProps {
 }
 
 const FormOverlay: react.FC<FormOverlayProps> = ({data, error, loading, setShowOverlay}) => {
-  console.log(data)
   if (loading) {
     return <FormOverlayWrapper>
       <div 

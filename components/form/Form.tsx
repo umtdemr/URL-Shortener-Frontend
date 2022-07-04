@@ -26,12 +26,18 @@ const Form: react.FC = () => {
 
   const [shortenUrl, { data, loading, error }] = useMutation(SHORTEN_URL);
   const [showOverlay, setShowOverlay] = useState(false);
+  const [url, setUrl] = useState('');
 
   const shortenMutation = async () => {
+    setUrl('');
     setShowOverlay(true);
     try {
       await shortenUrl({
-        variables: {data: {url: 'https://qwqqe.com'}}
+        variables: {
+          data: {
+            url,
+          }
+        }
       })
     } catch (err) {
       console.error(err);
@@ -73,6 +79,8 @@ const Form: react.FC = () => {
               <div className={styles.form}>
                 <input 
                   placeholder='URL'
+                  value={url}
+                  onChange={(e) => setUrl(e.target.value)}
                   type="text" />
                 <button 
                   onClick={() => shortenMutation()}
