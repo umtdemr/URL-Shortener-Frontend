@@ -28,6 +28,10 @@
   align-items: center;
   @include breakpoint-down(small) {
     flex-direction: column;
+    margin-block-start: rem(10);
+  }
+  @include breakpoint-down(large) {
+    padding: rem(20);
   }
 }
 
@@ -97,6 +101,9 @@
       margin: 0 auto;
       border-radius: 10px;
       border: 1px solid var(--text-color);
+      @include breakpoint-down(small) {
+        width: 95%;
+      }
     }
     &_wrapper {
       height: 100%;
@@ -104,10 +111,12 @@
     .form {
       width: 100%;
     }
+
   }
   @include breakpoint-down(small) {
     order: 1;
     width: 95%;
+    height: 305px;
   }
 }
 .btn_shorten {

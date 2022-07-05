@@ -10,6 +10,9 @@
   background-color: #333;
   color: #fff;
   border-radius: 25px;
+  @include breakpoint-down(small) {
+    width: 90%;
+  }
 }
 .overlay__header {
   height: 10%;
