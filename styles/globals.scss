@@ -9,6 +9,8 @@ body {
 }
 body {
   background-color: var(--bg);
+  background: url('../public/compressed-bg.jpeg') no-repeat;
+  background-size: cover;
   color: var(--text-color)
 }
 
