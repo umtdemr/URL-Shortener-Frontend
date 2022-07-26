@@ -3,9 +3,8 @@ import type { AppProps } from 'next/app'
 import { ApolloClient, ApolloProvider, gql, InMemoryCache } from '@apollo/client'
 
 
-// TODO: make sure url will be provided from env file in future 
 const client = new ApolloClient({
-  uri: 'http://localhost:4000/graphql',
+  uri: process.env.NEXT_PUBLIC_BACKEND_URL,
   cache: new InMemoryCache()
 })
 
